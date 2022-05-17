@@ -5,7 +5,7 @@
     <main>
       <h1 id="title">Welcome to Opportunity</h1>
       
-      <p id="date">{{ currentDate }}</p>
+      <p id="date">{{ currentDate() }}</p>
 
       <ul id="listBox">
         <li>
@@ -41,20 +41,20 @@ export default {
     return {
     date: new Date()
     }
-}
-methods: {
-    currentDate() {
-      const current = new Date();
-      const day = current.getDate();
-      const month = current.getMonth();
-      const year = current.getFullYear();
-      const dateTime = day + "." + month + "." + year;
-      if (month < 10) {
-        return day + "." + "0" + month + "." + year;
-      }
-      return dateTime;
-    }
   },
+  methods: {
+      currentDate() {
+        const current = new Date();
+        const day = current.getDate();
+        const month = current.getMonth();
+        const year = current.getFullYear();
+        const dateTime = day + "." + month + "." + year;
+        if (month < 10) {
+          return day + "." + "0" + month + "." + year;
+        }
+        return dateTime;
+      }
+    },
 };
 </script>
 
