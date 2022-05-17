@@ -7,19 +7,10 @@
       
       <p id="date">{{ currentDate() }}</p>
 
+
       <ul id="listBox">
-        <li>
-          <p><span id="itemTime">17.02.2022 um 14.00 Uhr</span></p>
-          <h3 id="item">Basisbäscheftigung Besuch</h3>
-          <p><span id="itemDescription">Interessierte für den zweiten Kurs werden uns besuchen</span></p>
-          </li>
-        <li>
-          <p><span id="itemTime">18.02.2022 um 14.00 Uhr</span></p>
-          <h3 id="item">Basisbäscheftigung Besuch</h3>
-          <p><span id="itemDescription">Interessierte für den zweiten Kurs werden uns besuchen</span></p>
-          </li>
-        <li>
-          <p><span id="itemTime">19.02.2022 um 14.00 Uhr</span></p>
+        <li v-for="entry in entries.slice(1)" :key="entry">
+          <p><span id="itemTime" >{{ entry }}</span></p>
           <h3 id="item">Basisbäscheftigung Besuch</h3>
           <p><span id="itemDescription">Interessierte für den zweiten Kurs werden uns besuchen</span></p>
           </li>
@@ -44,16 +35,23 @@ export default {
     title: "Welcome to Opportunity",
     sheet_id: "1a81aI0Y8ViZO0tI92h2YSMqVQJ8hmNNMyMylXgvwiU4",
     api_token: "AIzaSyA-qeDXOhEeQDA0vQf7LgkF7DQtGnAtmAU",
+    entries: [],
     }
   },
 
   computed: {
-    function() {
-      return 'https://sheets.googleapis.com/v4/spreadsheets/${this.sheet_id}/values:batchGet?ranges=A1%3AE100&valueRenderOption=FORMATTED_VALUE&key=${this.api_token}';
+    gsheet_url() {
+      return `https://sheets.googleapis.com/v4/spreadsheets/${this.sheet_id}/values:batchGet?ranges=A1%3AE100&valueRenderOption=FORMATTED_VALUE&key=${this.api_token}`;
     }
   },
 
   methods: {
+      getData() {
+        axios.get(this.gsheet_url).then((response) => {
+          this.entries = response.data.valueRanges[0].values;
+        });
+      },
+
       currentDate() {
         const current = new Date();
         const day = current.getDate();
@@ -65,7 +63,10 @@ export default {
         }
         return dateTime;
       }
-    },
+  },
+  mounted() {
+    this.getData();
+  }
 };
 </script>
 
