@@ -3,7 +3,7 @@
     <header>
     </header>
     <main>
-      <h1 id="title">Welcome to Opportunity</h1>
+      <h1 id="title">{{ title }}</h1>
       
       <p id="date">{{ currentDate() }}</p>
 
@@ -35,11 +35,24 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: 'App',
   data() {
+    return {
+    title: "Welcome to Opportunity",
+    sheet_id: "1a81aI0Y8ViZO0tI92h2YSMqVQJ8hmNNMyMylXgvwiU4",
+    api_token: "AIzaSyA-qeDXOhEeQDA0vQf7LgkF7DQtGnAtmAU",
+    }
   },
-  
+
+  computed: {
+    function() {
+      return 'https://sheets.googleapis.com/v4/spreadsheets/${this.sheet_id}/values:batchGet?ranges=A1%3AE100&valueRenderOption=FORMATTED_VALUE&key=${this.api_token}';
+    }
+  },
+
   methods: {
       currentDate() {
         const current = new Date();
