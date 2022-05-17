@@ -9,17 +9,17 @@
 
       <ul id="listBox">
         <li>
-          <p><span id="itemTime">14.00 Uhr</span></p>
+          <p><span id="itemTime">17.02.2022 um 14.00 Uhr</span></p>
           <h3 id="item">Basisbäscheftigung Besuch</h3>
           <p><span id="itemDescription">Interessierte für den zweiten Kurs werden uns besuchen</span></p>
           </li>
         <li>
-          <p><span id="itemTime">14.00 Uhr</span></p>
+          <p><span id="itemTime">18.02.2022 um 14.00 Uhr</span></p>
           <h3 id="item">Basisbäscheftigung Besuch</h3>
           <p><span id="itemDescription">Interessierte für den zweiten Kurs werden uns besuchen</span></p>
           </li>
         <li>
-          <p><span id="itemTime">14.00 Uhr</span></p>
+          <p><span id="itemTime">19.02.2022 um 14.00 Uhr</span></p>
           <h3 id="item">Basisbäscheftigung Besuch</h3>
           <p><span id="itemDescription">Interessierte für den zweiten Kurs werden uns besuchen</span></p>
           </li>
@@ -38,15 +38,13 @@
 export default {
   name: 'App',
   data() {
-    return {
-    date: new Date()
-    }
   },
+  
   methods: {
       currentDate() {
         const current = new Date();
         const day = current.getDate();
-        const month = current.getMonth();
+        const month = (current.getMonth()+1);
         const year = current.getFullYear();
         const dateTime = day + "." + month + "." + year;
         if (month < 10) {
@@ -72,6 +70,10 @@ export default {
   padding: 0;
   box-sizing: border-box;
   font-family: 'Inter', Arial, Helvetica, Arial, sans-serif;
+}
+
+#app {
+  background-color:#E8EFF4;
 }
 
 h1 {
@@ -125,11 +127,6 @@ img {
 #img3 {
   position: absolute;
   left: 67vw;
-}
-
-#app {
-  background-color:#E8EFF4;
-
 }
 
 #item {
