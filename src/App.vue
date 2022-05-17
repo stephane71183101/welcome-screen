@@ -10,7 +10,7 @@
 
       <ul id="listBox">
         <li v-for="entry in entries" :key="entry">
-          <p><span id="itemTime" >{{ entry[0] }}, RegExp("/", "."){{ entry[1] }}</span></p>
+          <p><span id="itemTime" >{{ entry[0] }}, {{ entry[1] }}</span></p>
           <h3 id="item">{{ entry[2] }}</h3>
           <p><span id="itemDescription">I{{ entry[3] }}</span></p>
           </li>
@@ -46,24 +46,29 @@ export default {
   },
 
   methods: {
-      getData() {
-        axios.get(this.gsheet_url).then((response) => {
-          this.entries = response.data.valueRanges[0].values;
-        });
-      },
+    getData() {
+      axios.get(this.gsheet_url).then((response) => {
+        this.entries = response.data.valueRanges[0].values;
+      });
+    },
 
-      currentDate() {
-        const current = new Date();
-        const day = current.getDate();
-        const month = (current.getMonth()+1);
-        const year = current.getFullYear();
-        const dateTime = day + "." + month + "." + year;
-        if (month < 10) {
-          return day + "." + "0" + month + "." + year;
-        }
-        return dateTime;
+    currentDate() {
+      const current = new Date();
+      const day = current.getDate();
+      const month = (current.getMonth()+1);
+      const year = current.getFullYear();
+      const dateTime = day + "." + month + "." + year;
+      if (month < 10) {
+        return day + "." + "0" + month + "." + year;
       }
+      return dateTime;
+    },
+  
+      // dateStringReplace() {
+      //   this.entries = this.entries.replace("/", ".");
+      // }
   },
+
   mounted() {
     this.getData();
   }
