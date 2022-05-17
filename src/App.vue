@@ -1,36 +1,61 @@
 <template v-bind:style="{ 'background-color': color}">
   <div id="app">
+    <header>
+    </header>
     <main>
-      <h1>Welcome to Opportunity</h1>
-      <p id="date">11.03.1944</p>
+      <h1 id="title">Welcome to Opportunity</h1>
       
-      <ul>
-        <li id="listBox">
-          <span>14.00 Uhr</span>
-          <h3>Bäftigung Besuch</h3>
-          <span>Interessierte für den zweiten Kurs werden uns besuchen</span>
+      <p id="date">{{ currentDate }}</p>
+
+      <ul id="listBox">
+        <li>
+          <p><span id="itemTime">14.00 Uhr</span></p>
+          <h3 id="item">Basisbäscheftigung Besuch</h3>
+          <p><span id="itemDescription">Interessierte für den zweiten Kurs werden uns besuchen</span></p>
+          </li>
+        <li>
+          <p><span id="itemTime">14.00 Uhr</span></p>
+          <h3 id="item">Basisbäscheftigung Besuch</h3>
+          <p><span id="itemDescription">Interessierte für den zweiten Kurs werden uns besuchen</span></p>
+          </li>
+        <li>
+          <p><span id="itemTime">14.00 Uhr</span></p>
+          <h3 id="item">Basisbäscheftigung Besuch</h3>
+          <p><span id="itemDescription">Interessierte für den zweiten Kurs werden uns besuchen</span></p>
           </li>
       </ul>
-
+      </main>
       <footer>
-        <p>footer</p>
-        <img>
-        <img>
-        <img>
+        <img id="img1" src="./assets/STZH_SEB_Logo.png">
+        <img id="img2" src="./assets/Opportunity.png">
+        <img id="img3" src="./assets/SAG_Logo_De.png">
       </footer>
-    </main>
+
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'App',
   data() {
-return {
+    return {
+    date: new Date()
+    }
 }
-}
-}
+methods: {
+    currentDate() {
+      const current = new Date();
+      const day = current.getDate();
+      const month = current.getMonth();
+      const year = current.getFullYear();
+      const dateTime = day + "." + month + "." + year;
+      if (month < 10) {
+        return day + "." + "0" + month + "." + year;
+      }
+      return dateTime;
+    }
+  },
+};
 </script>
 
 <style>
@@ -43,42 +68,22 @@ return {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
-}
-
-body {
   font-family: 'Inter', sans-serif;
 }
 
 h1 {
-position: absolute;
-width: 764px;
-height: 75px;
-left: 60px;
-top: 69px;
-font-family: 'Inter';
-font-style: normal;
+position: static;
+width: 100%;
+padding: 5.5vw 5.5vw 0vw;
 font-weight: 900;
 font-size: 62px;
 line-height: 75px;
 color: #323D4A;
 }
 
-ul {
-position: absolute;
-left: 5.5vw;
-right: 5.5vw;
-top: 20.33%;
-bottom: 20.33%;
-background: #0F05A0;
-}
-
 #date {
-position: absolute;
-width: 335px;
-height: 75px;
-left: 60px;
-top: 165px;
+position: relative;
+padding: 2vw 5.5vw;
 font-family: 'Inter';
 font-style: normal;
 font-weight: 500;
@@ -87,9 +92,62 @@ line-height: 75px;
 color: #9AA7B1;
 }
 
+#listBox {
+position: relative;
+margin: 0vw 5.5vw 0vw;
+}
+
+li {
+position: relative;
+margin-bottom: 30px;
+padding: 3vw;
+background: #0F05A0;
+list-style-type: none;
+}
+
+img {
+    height: 5vw;
+}
+
+#img1 {
+  position: absolute;
+  left: 5.5vw;
+}
+
+#img2 {
+  position: absolute;
+  left: 34vw;
+}
+
+#img3 {
+  position: absolute;
+  left: 67vw;
+}
+
 #app {
   background-color:#E8EFF4;
 
+}
+
+#item {
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 36px;
+  color: #fca66c;;
+}
+
+#itemTime {
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 36px;
+  color: #EB5E00;
+}
+
+#itemDescription {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 36px;
+  color: #fca66c;
 }
 
 main {
@@ -100,6 +158,11 @@ main {
 
 footer {
   position: fixed;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  height: 130px;
+  padding: 4vw ;
   background-color: white;
 }
 </style>
