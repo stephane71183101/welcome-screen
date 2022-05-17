@@ -74,7 +74,7 @@ export default {
 h1 {
 position: static;
 width: 100%;
-padding: 5.5vw 5.5vw 0vw;
+padding: 5.5vw 2vw 0vw;
 font-weight: 900;
 font-size: 62px;
 line-height: 75px;
@@ -83,7 +83,7 @@ color: #323D4A;
 
 #date {
 position: relative;
-padding: 2vw 5.5vw;
+padding: 2vw 2vw;
 font-family: 'Inter';
 font-style: normal;
 font-weight: 500;
@@ -94,7 +94,7 @@ color: #9AA7B1;
 
 #listBox {
 position: relative;
-margin: 0vw 5.5vw 0vw;
+margin: 0vw 2vw 0vw;
 }
 
 li {
