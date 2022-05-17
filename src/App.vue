@@ -9,10 +9,10 @@
 
 
       <ul id="listBox">
-        <li v-for="entry in entries.slice(1)" :key="entry">
-          <p><span id="itemTime" >{{ entry }}</span></p>
-          <h3 id="item">Basisbäscheftigung Besuch</h3>
-          <p><span id="itemDescription">Interessierte für den zweiten Kurs werden uns besuchen</span></p>
+        <li v-for="entry in entries" :key="entry">
+          <p><span id="itemTime" >{{ entry[0] }}, RegExp("/", "."){{ entry[1] }}</span></p>
+          <h3 id="item">{{ entry[2] }}</h3>
+          <p><span id="itemDescription">I{{ entry[3] }}</span></p>
           </li>
       </ul>
       </main>
@@ -41,7 +41,7 @@ export default {
 
   computed: {
     gsheet_url() {
-      return `https://sheets.googleapis.com/v4/spreadsheets/${this.sheet_id}/values:batchGet?ranges=A1%3AE100&valueRenderOption=FORMATTED_VALUE&key=${this.api_token}`;
+      return `https://sheets.googleapis.com/v4/spreadsheets/${this.sheet_id}/values:batchGet?ranges=A2%3AE100&valueRenderOption=FORMATTED_VALUE&key=${this.api_token}`;
     }
   },
 
