@@ -72,12 +72,11 @@ export default {
     }
     },
 
-  // mounted() {
-  //   this.refreshData();
-  //   setInterval(() => {
-  //     this.refreshData();
-  //     }, 1800000);
-  // }
+  mounted() {
+    this.refreshData();
+    setInterval(
+      this.refreshData, 1800000);
+  }
 };
 </script>
 
