@@ -8,7 +8,7 @@
       <p id="date">{{ currentDate() }}</p>
 
       <ul v-if="entries" id="listBox">
-        <li v-for="entry in entries" :key="entry">
+        <li v-for="entry in entries" :key="entry.id">
           <p><span id="itemTime" >{{ entry[0] }}, {{ entry[1].replaceAll('/', '.') }}</span></p>
           <h3 id="item">{{ entry[2] }}</h3>
           <p><span id="itemDescription">I{{ entry[3] }}</span></p>
@@ -65,19 +65,18 @@ export default {
       }
       return dateTime;
     },
-  
-    // dateStringReplace() {
-    //   this.entries = this.entries.replace("/", ".");
-    // }
 
-    // slashReplace() {
-    // let rep
-    //   let newStr = str.replace(substr, newSubstr);
-    // },
-  },
+    refreshData() {
+      this.currentDate();
+      this.getData();
+    }
+    },
 
   mounted() {
-    this.getData();
+    this.refreshData();
+    setInterval(() => {
+      this.refreshData();
+      }, 1800000);
   }
 };
 </script>
@@ -191,7 +190,6 @@ main {
 }
 
 footer {
-  position: fixed;
   left: 0px;
   right: 0px;
   bottom: 0px;
