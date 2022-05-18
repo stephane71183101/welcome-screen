@@ -7,14 +7,16 @@
       
       <p id="date">{{ currentDate() }}</p>
 
-
-      <ul id="listBox">
+      <ul v-if="entries" id="listBox">
         <li v-for="entry in entries" :key="entry">
           <p><span id="itemTime" >{{ entry[0] }}, {{ entry[1].replaceAll('/', '.') }}</span></p>
           <h3 id="item">{{ entry[2] }}</h3>
           <p><span id="itemDescription">I{{ entry[3] }}</span></p>
           </li>
       </ul>
+
+      <p id="noEntries" v-else>Keine Termine geplant!</p>
+
       </main>
       <footer>
         <img id="img1" src="./assets/STZH_SEB_Logo.png">
@@ -172,6 +174,14 @@ img {
   font-size: 28px;
   line-height: 36px;
   color: #fca66c;
+}
+
+#noEntries {
+  padding: 5.5vw 2vw 0vw;
+  font-weight: 900;
+  font-size: 62px;
+  line-height: 75px;
+  color: blue;
 }
 
 main {
