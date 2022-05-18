@@ -10,7 +10,7 @@
 
       <ul id="listBox">
         <li v-for="entry in entries" :key="entry">
-          <p><span id="itemTime" >{{ entry[0] }}, {{ entry[1] }}</span></p>
+          <p><span id="itemTime" >{{ entry[0] }}, {{ entry[1].replaceAll('/', '.') }}</span></p>
           <h3 id="item">{{ entry[2] }}</h3>
           <p><span id="itemDescription">I{{ entry[3] }}</span></p>
           </li>
@@ -35,7 +35,7 @@ export default {
     title: "Welcome to Opportunity",
     sheet_id: "1a81aI0Y8ViZO0tI92h2YSMqVQJ8hmNNMyMylXgvwiU4",
     api_token: "AIzaSyA-qeDXOhEeQDA0vQf7LgkF7DQtGnAtmAU",
-    entries: [],
+    entries: [], 
     }
   },
 
@@ -64,9 +64,14 @@ export default {
       return dateTime;
     },
   
-      // dateStringReplace() {
-      //   this.entries = this.entries.replace("/", ".");
-      // }
+    // dateStringReplace() {
+    //   this.entries = this.entries.replace("/", ".");
+    // }
+
+    // slashReplace() {
+    // let rep
+    //   let newStr = str.replace(substr, newSubstr);
+    // },
   },
 
   mounted() {
