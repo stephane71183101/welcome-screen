@@ -16,14 +16,12 @@
       </ul>
 
       <p id="noEntries" v-else>Keine Termine geplant!</p>
-
       </main>
       <footer>
         <img id="img1" src="./assets/STZH_SEB_Logo.png">
         <img id="img2" src="./assets/Opportunity.png">
         <img id="img3" src="./assets/SAG_Logo_De.png">
       </footer>
-
   </div>
 </template>
 
@@ -81,11 +79,6 @@ export default {
 </script>
 
 <style>
-/* @font-face {
-  font-family: 'Inter';
-  src: url('~@/assets/Inter-VariableFont_slnt,wght.ttf');
-} */
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;900&display=swap');
 
 
